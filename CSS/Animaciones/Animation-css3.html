@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)https://classlife-static.s3.amazonaws.com/upldr/enti-classlife-education/2018/11/29/animationcss3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <style>
+      body {
+        max-width: 1200px;
+      }
+      @keyframes move {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      @keyframes shape {
+        0% {
+          transform: scale(0.3);
+          background-color: red;
+          border-radius: 100%;
+        }
+        50% {
+          background-color: orange;
+          border-radius: 50%;
+        }
+        100% {
+          transform: scale(1.5);
+          background-color: yellow;
+          border-radius: 0px;
+        }
+      }
+
+      @keyframes roll {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      #box1 {
+        animation-name: move;
+        animation-duration: 5s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      #box2 {
+        animation-name: shape;
+        transform-origin: top left;
+        animation-duration: 1.5s;
+        animation-timing-function: linear;
+        animation-delay: 0;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-fill-mode: none;
+        animation-play-state: running;
+      }
+      #box3 {
+        animation-name: roll;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: 3s;
+      }
+      .box {
+        position: relative;
+        background-color: blue;
+        border-style: solid;
+        border-color: black;
+        border-width: 3px;
+        width: 65px;
+        height: 65px;
+        margin-top: 100px;
+      }
+      #example-element-container {
+        background-color: lightgrey;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="example-element-container">
+      <p>In this example we will play with different kinds of animations</p>
+      <div class="box" id="box1"></div>
+      <div class="box" id="box2"></div>
+      <div class="box" id="box3"></div>
+    </div>
+  
+
+</body></html>

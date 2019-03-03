@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)https://classlife-static.s3.amazonaws.com/upldr/enti-classlife-education/2019/02/27/basicAnimation.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <style>
+      canvas {
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="500px" height="500px"></canvas>
+  
+  <script type="application/javascript">
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let x = Math.random() * canvas.width;
+    let y = 0;
+    let score = 0;
+    let maxScore = 0;
+    let startSpeed = 1.5;
+    let speed = startSpeed;
+
+    const onClick = event => {
+      if(event.region === 'circle') {
+        y = 0;
+        x = Math.random() * canvas.width
+        score++;
+        speed += 0.2;
+      }
+      if(event.region === 'newGame') {
+        y = 0;
+        score = 0;
+        speed = startSpeed;
+        draw();
+      }
+      console.log(event.region);
+    }
+    const showGameOver = () => {
+        ctx.font = 'bold 30px verdad, sans-serif';
+        ctx.fillStyle = '#ff0000';
+        ctx.textAlign = 'center';
+        ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
+    }
+
+    const resetGame = () => {
+      ctx.beginPath();
+      ctx.fillStyle = '#ff9958';
+      ctx.arc(250, 250, 25, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+      ctx.addHitRegion({id: "newGame"});
+
+      ctx.font = 'bold 20px verdad, sans-serif';
+      ctx.fillStyle = '#ff8000';
+      ctx.textAlign = 'left';
+      ctx.fillText(`Max Score: ${maxScore}`, 20, 100);
+   }
+   canvas.addEventListener('click', onClick);
+
+
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = 'bold 30px verdad, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#ff0000';
+      ctx.fillText(`Score: ${score}`, 20, 50);
+
+      ctx.beginPath();
+      ctx.fillStyle = '#fA2240';
+      ctx.arc(x, y, 25, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+      ctx.addHitRegion({id: "circle"});
+      
+      canvas.addEventListener('click', onClick);
+
+      //ctx.fillStyle = this.color;
+      y += speed;
+
+    
+      if(y >= canvas.height) {
+        if (score > maxScore)
+        {
+          maxScore = score;
+        }
+        
+        showGameOver();
+        resetGame();
+      }
+      else {
+        requestAnimationFrame(draw);
+      }      
+
+    };
+    draw();
+
+  </script>
+
+</body></html>

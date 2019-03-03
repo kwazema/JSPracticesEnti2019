@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Practica 2 - UF1</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <div id="login">
+      <h1>LOGIN</h1>
+      <form id="my-form" onsubmit="onSubmit(); return false;">
+        <label for="name">Name</label><br />
+        <input type="text" name="name" id="name" /> <br />
+        <label for="password">Password</label> <br />
+        <input type="password" name="password" id="password" /> <br />
+        <button>Go!</button>
+      </form>
+    </div>
+    
+    <div id="logout">
+      <h1>WELCOME BACK!</h1>
+      <button onclick="onLogout()">LOGOUT</button>
+
+      <br>
+
+      <label for="pais">Pelicula: </label>
+      <input type="text" name="pais" id="input-value" /> 
+  
+      <button onclick="filmInput()">Search!</button>
+      <div id="added-film"></div>
+    </div>
+
+    <script type="text/javascript" src="request.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
