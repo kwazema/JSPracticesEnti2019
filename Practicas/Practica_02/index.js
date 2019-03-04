@@ -113,6 +113,7 @@ onRequestSuccess = json => {
     // });
 }
 
+// Hacer un refresh
 const filmInput = () => {
     const inputValue = document.getElementById('input-value').value;
     //console.log(inputValue);
