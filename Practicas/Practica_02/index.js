@@ -1,47 +1,57 @@
+
+//----------- Init Variables -----------//
 const form = document.getElementById('my-form');
 const loginDiv = document.getElementById('login');
 const logoutDiv = document.getElementById('logout');
-let remove = false;
-let filmElement;
+const contentDiv = document.getElementById('added-film');
 
 
-// logoutDiv.style.display='none';
+const welcomeUser = () =>{
+    var userName = localStorage.getItem('user', name);
+    console.log(userName);
+    const banner = document.getElementById('banner_user');
+    banner.innerHTML = `Welcome ${userName}!`;    
+}
+
+
+const drop = document.getElementById('drop');
+drop.style.display='none';
+
+let lengthChildDiv;
+
 
 const checkUser = () => {
     if (localStorage.getItem('user')) {
         loginDiv.style.display='none';
-        logoutDiv.style.display='block';
+        logoutDiv.style.display='flex';
+        
+        welcomeUser();
     }else{
         logoutDiv.style.display='none';
-        loginDiv.style.display='block';
+        loginDiv.style.display='flex';
     }
 }
 
 checkUser();
 
-const addLogin = () => {
+// const addLogin = () => {
 
-}
+// }
 
 const onLogout = () => {
     logoutDiv.style.display='none';
-    loginDiv.style.display='block';
+    loginDiv.style.display='flex';
     localStorage.removeItem('user', name);
 }
 
 const onSubmit = () => {
-    // const containerNone = document.createElement('div');
-
-
     // GET ELEMENTS
     const formElements = form.elements;
     const name = formElements[0].value;
 
-    // HERE WE SHOULD CALL TO BACKEND TO REALLY DO THE LOGIN
-
     // STORE USER DATA ON LOCAL STORAGE
-    localStorage.setItem('user', name);
-
+    localStorage.setItem('user', name);  
+    //const name = localStorage.setItem('user', name);
     checkUser();
 };
 
@@ -52,36 +62,33 @@ const onSubmit = () => {
 //const showFilmInfo = (name, capital, flagURL) => {
 const showFilmInfo = (title, imgURL, desc) => {
     
-    let contentDiv = document.getElementById('added-film');
-
-    if (remove)
-    {
-        
-        contentDiv.removeChild(contentDiv.firstChild);
-        contentDiv = document.getElementById('added-film');
-    }
-
-        // ***** RENDER NAME *****
+    //----------- RENDER TITLE -----------//
     const titleElement = document.createElement('h2');
     const titleText = document.createTextNode(title);
     titleElement.appendChild(titleText);
 
 
-        // ***** RENDER FLAG *****
+    //------------ RENDER IMG ------------//
     const imgElement = document.createElement('img');
-    imgElement.src = `https://image.tmdb.org/t/p/original/${imgURL}`;
-    contentDiv.appendChild(imgElement);
-    imgElement.height = 300;
-    imgElement.width = 200;
 
-    // ***** RENDER CAPITAL *****
+    if (imgURL === null)
+        imgElement.src = "NotFound.png";
+    else
+        imgElement.src = `https://image.tmdb.org/t/p/original/${imgURL}`;
+
+    contentDiv.appendChild(imgElement);
+    imgElement.height = 250;
+    imgElement.width = 175;
+
+
+    //-------- RENDER DESCRIPTION --------//
     const descElement = document.createElement('p');
     const descText = document.createTextNode(desc);
     descElement.appendChild(descText);
 
 
-    // ***** RENDER CONTENT FILM *****    
-    filmElement = document.createElement('div');
+    //-------- RENDER CONTENT FILM -------//
+    const filmElement = document.createElement('div');
 
     filmElement.classList.add('film');
     filmElement.appendChild(titleElement);
@@ -95,13 +102,24 @@ onRequestSuccess = json => {
     console.log('Request', json.results);
     const films = json.results;
 
-    if (films != null)
-    {
+    if (lengthChildDiv > 0) {        
+        deleteChilds();
+    }
+
+    if (films !== null) {    
         films.forEach(film => {
             showFilmInfo(film.title, film.poster_path, film.overview);
-        });
+        });     
         
-        remove = true;
+        lengthChildDiv = contentDiv.childNodes.length
+        
+        if (lengthChildDiv === 0)
+            drop.style.display='none';
+        else
+            drop.style.display='flex';
+        
+    }else{
+        deleteChilds();
     }
 }
 
@@ -114,6 +132,13 @@ const filmInput = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=bc3dd0eb8086743c507d691477d25c1e&query=${inputValue}`,
         onRequestSuccess
     );
+}
+
+const deleteChilds = () => {
+    while (contentDiv.firstChild){
+        contentDiv.removeChild(contentDiv.firstChild);
+    }
+    drop.style.display='none';
 }
 
   
