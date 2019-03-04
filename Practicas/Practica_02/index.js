@@ -1,6 +1,9 @@
 const form = document.getElementById('my-form');
 const loginDiv = document.getElementById('login');
 const logoutDiv = document.getElementById('logout');
+let remove = false;
+let filmElement;
+
 
 // logoutDiv.style.display='none';
 
@@ -48,8 +51,15 @@ const onSubmit = () => {
 
 //const showFilmInfo = (name, capital, flagURL) => {
 const showFilmInfo = (title, imgURL, desc) => {
-    const contentDiv = document.getElementById('added-film');
-    console.log(title);
+    
+    let contentDiv = document.getElementById('added-film');
+
+    if (remove)
+    {
+        
+        contentDiv.removeChild(contentDiv.firstChild);
+        contentDiv = document.getElementById('added-film');
+    }
 
         // ***** RENDER NAME *****
     const titleElement = document.createElement('h2');
@@ -70,9 +80,9 @@ const showFilmInfo = (title, imgURL, desc) => {
     descElement.appendChild(descText);
 
 
-
     // ***** RENDER CONTENT FILM *****    
-    const filmElement = document.createElement('div');
+    filmElement = document.createElement('div');
+
     filmElement.classList.add('film');
     filmElement.appendChild(titleElement);
     filmElement.appendChild(imgElement);
@@ -85,32 +95,14 @@ onRequestSuccess = json => {
     console.log('Request', json.results);
     const films = json.results;
 
-    films.forEach(film => {
-        showFilmInfo(film.title, film.poster_path, film.overview);
-        //showFilmInfo(film.name, film.capital, film.flag);
-    });
-
-
-
-    //const containerImg = document.getElementById('added-flag');
-    
-    // json.forEach(item => { 
-    //     console.log(item);
-    //     console.log(item.name);
+    if (films != null)
+    {
+        films.forEach(film => {
+            showFilmInfo(film.title, film.poster_path, film.overview);
+        });
         
-    //     //const imageURL = json[i].flag; //url de la imagen
-    //     const imgURL = item.flag; //url de la imagen
-    //     const imgNAME = item.name; //url de la imagen
-
-    //     const imgElement = document.createElement('img');
-    //     const nameElement = document.createElement('p');
-
-    //     imgElement.src = imgURL; // coger flag de la respuesta
-    //     nameElement.innerHTML = imgNAME;
-                 
-    //     containerImg.appendChild(imgElement);
-    //     containerImg.appendChild(nameElement);
-    // });
+        remove = true;
+    }
 }
 
 // Hacer un refresh
