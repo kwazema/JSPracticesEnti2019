@@ -76,7 +76,7 @@ const showFilmInfo = (title, imgURL, desc) => {
     else
         imgElement.src = `https://image.tmdb.org/t/p/original/${imgURL}`;
 
-    contentDiv.appendChild(imgElement);
+    //  contentDiv.appendChild(imgElement);
     imgElement.height = 250;
     imgElement.width = 175;
 
@@ -85,6 +85,15 @@ const showFilmInfo = (title, imgURL, desc) => {
     const descElement = document.createElement('p');
     const descText = document.createTextNode(desc);
     descElement.appendChild(descText);
+
+    
+    //---------- RENDER START -----------//
+    const startElement = document.createElement('img');
+    startElement.src = "start.png";
+
+    // contentDiv.appendChild(startElement);
+    startElement.height = 50;
+    startElement.width = 50;
 
 
     //-------- RENDER CONTENT FILM -------//
@@ -96,6 +105,15 @@ const showFilmInfo = (title, imgURL, desc) => {
     filmElement.appendChild(descElement);
 
     contentDiv.appendChild(filmElement);
+
+
+    //------- RENDER CONTENT START ------//
+    const startsElement = document.createElement('div');
+
+    startsElement.classList.add('start');
+    startsElement.appendChild(startElement);
+
+    filmElement.appendChild(startsElement);
 }
 
 onRequestSuccess = json => {
