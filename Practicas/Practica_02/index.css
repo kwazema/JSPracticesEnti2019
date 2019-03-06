@@ -1,148 +1,6 @@
-
 /* ------------------------ */
-/*          MAIN            */
+/*          BODY            */
 /* ------------------------ */
-
-
-#section_login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5em;
-
-    flex: 5;
-}
-
-/* OKEY */
-img {
-    float: left;
-    /* margin: 2em; */
-
-    margin-right: 2em;
-    /* margin-bottom: .5em; */
-}
-
-/* MIDDLE */
-#input {
-    display: flex;
-    justify-content: center; /* MIDDLE */ 
-    align-items: center; /* MIDDLE */
-    width: 100%;
-
-    margin-top: 1em;
-}
-
-#section_logout {
-    display: flex;
-    justify-content: center;
-    align-items: self-start;
-    margin-top: 1em;
-}
-
-#login {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-
-    justify-content: space-between;
-    border-style: ridge;
-    
-    border-radius: 25px;
-    padding: 1.8em;
-    padding-top: 0.5em;
-    margin: auto;
-    
-    color: aliceblue;
-    background: rgba(0,0,0,0.8);
-    border-color: rgba(65,61,52,1);
-    box-shadow: inset 0 0 6.250em rgba(65,61,52,1), 0 0 0em rgba(232,190,107,0.8);
-}
-
-/* OKEY */
-#input-value {
-    margin-right: 1em;
-    margin-left: 1em;
-    width: 75%;
-}
-
-#logout {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-
-    justify-content: space-between;
-    
-    /* padding-top: 2em; */
-}
-
-#password{
-    margin-bottom: 3em;
-}
-
-/* OKEY */
-#banner {
-    display: flex;
-    justify-content: space-between;
-    border-style: ridge;
-    width: 93%;
-    height: 2em;
-    align-items: center;
-    /* text-align: center; */
-    /* border-radius: 25px; */
-    padding: 1em;
-    margin: 0.8em;
-    color: aliceblue;
-    background: rgba(0,0,0,0.8);
-    border-color: rgba(65,61,52,1);
-    box-shadow: inset 0 0 6.25em rgba(65,61,52,1), 0 0 0em rgba(232,190,107,0.8);
-}
-
-/* OKEY */
-#added-film {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* OKEY */
-.film {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 28em;
-    text-align: left;
-
-    justify-content: space-between;
-    border-style: ridge;
-    
-    border-radius: 25px;
-    padding: 1.8em;
-    padding-top: 0.5em;
-    margin: 1.250em;
-    
-    color: aliceblue;
-    background: rgba(0,0,0,0.8);
-    border-color: rgba(65,61,52,1);
-    box-shadow: inset 0 0 6.250em rgba(65,61,52,1), 0 0 0em rgba(232,190,107,0.8);
-}
-
-/* OKEY */
-.film_starts {
-    display: flex;    
-    margin-top: 1em;
-}
-
-main {
-    display: flex;
-    /* justify-content: center; */
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: column-reverse;
-
-
-    flex: 1;
-}
 
 body {
     display: flex;
@@ -150,3 +8,133 @@ body {
 
     background-color: #1b1b1c;
 }
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+
+    flex: 1;
+}
+
+img {
+    float: left;
+    
+    margin-right: 2em;
+    margin-bottom: 0.2em;
+}
+
+
+/* ------------------------ */
+/*          LOGIN           */
+/* ------------------------ */
+
+#login {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+
+    justify-content: space-between;
+    border-style: ridge;
+    
+    border-radius: 25px;
+    padding: 1.8em;
+    padding-top: 0.5em;
+    
+    color: aliceblue;
+    background: rgba(0,0,0,0.8);
+    border-color: rgb(18, 30, 99);
+    box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+#password{
+    margin-bottom: 3em;
+}
+
+
+/* ------------------------ */
+/*          LOGOUT          */
+/* ------------------------ */
+
+#logout {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 93%;
+    height: 2em;
+    padding: 1em;
+    margin: 0.8em;
+    
+    border-style: ridge;
+    color: aliceblue;
+    background: rgba(0,0,0,0.8);
+    border-color: rgb(18, 30, 99);
+    box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+#input {
+    display: flex;
+    justify-content: center; /* MIDDLE */ 
+    align-items: center; /* MIDDLE */
+    
+    width: 100%;
+    margin-top: 1em;
+
+    color: aliceblue;
+    font-weight: bold;
+}
+
+#input-value {
+    margin-right: 1em;
+    margin-left: 1em;
+    width: 75%;
+}
+
+
+/* ------------------------ */
+/*           FILM           */
+/* ------------------------ */
+
+#added-film {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.film {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    
+    justify-content: space-between;
+    border-style: ridge;
+    
+    width: 28em;
+    border-radius: 25px;
+    padding: 1.8em;
+    padding-top: 0.5em;
+    margin: 1.250em;
+    
+    color: aliceblue;
+    background: rgba(0,0,0,0.8);
+    border-color: rgb(18, 30, 99);
+    box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+.film_starts {
+    display: flex;    
+    margin-top: 1em;
+}
+

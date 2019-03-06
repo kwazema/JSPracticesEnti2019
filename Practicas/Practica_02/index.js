@@ -1,24 +1,17 @@
-
 //----------- Init Variables -----------//
 const form = document.getElementById('my-form');
 const loginDiv = document.getElementById('login');
 const logoutDiv = document.getElementById('logout');
 const contentDiv = document.getElementById('added-film');
-
-
-const welcomeUser = () =>{
-    var userName = localStorage.getItem('user', name);
-    console.log(userName);
-    const banner = document.getElementById('banner_user');
-    banner.innerHTML = `Welcome ${userName}!`;    
-}
-
-
 const drop = document.getElementById('drop');
 drop.style.display='none';
 
-let lengthChildDiv;
+const welcomeUser = () =>{
+    const banner = document.getElementById('banner_user');
+    var userName = localStorage.getItem('user', name);
 
+    banner.innerHTML = `Welcome ${userName}!`;    
+}
 
 const checkUser = () => {
     if (localStorage.getItem('user')) {
@@ -34,10 +27,6 @@ const checkUser = () => {
 
 checkUser();
 
-// const addLogin = () => {
-
-// }
-
 const onLogout = () => {
     logoutDiv.style.display='none';
     loginDiv.style.display='flex';
@@ -45,21 +34,15 @@ const onLogout = () => {
 }
 
 const onSubmit = () => {
-    // GET ELEMENTS
     const formElements = form.elements;
     const name = formElements[0].value;
 
-    // STORE USER DATA ON LOCAL STORAGE
     localStorage.setItem('user', name);  
-    //const name = localStorage.setItem('user', name);
     checkUser();
 };
 
-
 //-----------------------------------------------------//
 
-
-//const showFilmInfo = (name, capital, flagURL) => {
 const showFilmInfo = (title, imgURL, desc, average) => {
     
     //----------- RENDER TITLE -----------//
@@ -76,7 +59,6 @@ const showFilmInfo = (title, imgURL, desc, average) => {
     else
         imgElement.src = `https://image.tmdb.org/t/p/original/${imgURL}`;
 
-    //  contentDiv.appendChild(imgElement);
     imgElement.height = 250;
     imgElement.width = 175;
 
@@ -86,7 +68,6 @@ const showFilmInfo = (title, imgURL, desc, average) => {
     const descText = document.createTextNode(desc);
     descElement.appendChild(descText);
 
-    
 
     //-------------- AVERAGE -------------//
     const getAverage = [ 2, 4, 6, 8, 10 ];
@@ -101,6 +82,7 @@ const showFilmInfo = (title, imgURL, desc, average) => {
         }
     }
 
+
     //---------- RENDER START -----------//
     const startElement = new Array(numStarts);
     
@@ -114,18 +96,19 @@ const showFilmInfo = (title, imgURL, desc, average) => {
         startElement[i].width = 50;
     }
 
+
     //-------- RENDER CONTENT FILM -------//
     const infoElement = document.createElement('div');
     const startsElement = document.createElement('div');
     const filmElement = document.createElement('div');
 
-    //----------------------------------//
+    //------------------------------------//
 
     infoElement.classList.add('film_info');
     startsElement.classList.add('film_starts');
     filmElement.classList.add('film');
     
-    //----------------------------------//
+    //------------------------------------//
 
     infoElement.appendChild(titleElement);
     infoElement.appendChild(imgElement);
@@ -135,7 +118,7 @@ const showFilmInfo = (title, imgURL, desc, average) => {
         startsElement.appendChild(element);
     }); 
 
-    //----------------------------------//
+    //------------------------------------//
 
     filmElement.appendChild(infoElement);
     filmElement.appendChild(startsElement);
@@ -143,6 +126,7 @@ const showFilmInfo = (title, imgURL, desc, average) => {
     contentDiv.appendChild(filmElement);
 }
     
+let lengthChildDiv;
 const onRequestSuccess = (json) => {
     console.log('Request', json.results);
     const films = json.results;
@@ -168,10 +152,8 @@ const onRequestSuccess = (json) => {
     }
 }
 
-// Hacer un refresh
 const filmInput = () => {
     const inputValue = document.getElementById('input-value').value;
-    //console.log(inputValue);
 
     request (
         `https://api.themoviedb.org/3/search/movie?api_key=bc3dd0eb8086743c507d691477d25c1e&query=${inputValue}`,
