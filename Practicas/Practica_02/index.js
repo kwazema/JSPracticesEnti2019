@@ -104,7 +104,6 @@ const showFilmInfo = (title, imgURL, desc, average) => {
 
     //------------------------------------//
 
-    infoElement.classList.add('film_info');
     startsElement.classList.add('film_starts');
     filmElement.classList.add('film');
     
