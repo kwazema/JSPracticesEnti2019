@@ -16,9 +16,9 @@
         <h1>LOGIN</h1>
         <form id="my-form" onsubmit="onSubmit(); return false;">
           <label for="name">Username</label><br />
-          <input type="text" name="name" id="name" /> <br />
+          <input type="text" name="name" id="name" maxlength="15" placeholder="Ex: Soncan" required/> <br />
           <label for="password">Password</label> <br />
-          <input type="password" name="password" id="password" /> <br />
+          <input type="password" name="password" id="password" placeholder="Ex: 12345678" required/> <br />
           <button>Login!</button>
         </form>
       </div>
@@ -33,7 +33,7 @@
 
         <div id="input">
           <label for="film">Pelicula: </label>
-          <input type="text" name="film" id="input-value" />
+          <input type="text" name="film" id="input-value" placeholder="Ex: Harry Potter"/>
 
           <button onclick="filmInput()">Search!</button>
           <button id="drop" onclick="deleteChilds()">Delete!</button>
