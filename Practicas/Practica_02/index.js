@@ -55,7 +55,7 @@ const showFilmInfo = (title, imgURL, desc, average) => {
     const imgElement = document.createElement('img');
 
     if (imgURL === null)
-        imgElement.src = "NotFound.png";
+        imgElement.src = "images/NotFound.png";
     else
         imgElement.src = `https://image.tmdb.org/t/p/original/${imgURL}`;
 
@@ -89,8 +89,7 @@ const showFilmInfo = (title, imgURL, desc, average) => {
     for (i = 0; i < numStarts; i++) {
         startElement[i] = document.createElement('img');
 
-        startElement[i].src = "start.png";
-        startElement[i].src = "start.png";
+        startElement[i].src = "images/start.png";
     
         startElement[i].height = 50;
         startElement[i].width = 50;
