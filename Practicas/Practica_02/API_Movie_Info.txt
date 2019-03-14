@@ -1,9 +1,0 @@
-- bc3dd0eb8086743c507d691477d25c1e
-
--eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzNkZDBlYjgwODY3NDNjNTA3ZDY5MTQ3N2QyNWMxZSIsInN1YiI6IjVjN2JjNmMwOTI1MTQxNTZhZTQ3OTFlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.naUKqE-42QYiQsxLvj35klT2irlts4hVQN72QPK_s_Q
-
-- https://api.themoviedb.org/3/movie/550?api_key=bc3dd0eb8086743c507d691477d25c1e
-
-- https://api.themoviedb.org/3/search/movie?api_key=40d741b75b657fc99fa896bb456729c1&query=Jack+Reacher
-
-- https://api.themoviedb.org/3/search/movie?api_key=bc3dd0eb8086743c507d691477d25c1e&query=fast+andf+urious

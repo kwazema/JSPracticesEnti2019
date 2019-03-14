@@ -1,0 +1,140 @@
+/* ------------------------ */
+/*          BODY            */
+/* ------------------------ */
+
+body {
+    display: flex;
+    height: 95vh;
+
+    background-color: #1b1b1c;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+
+    flex: 1;
+}
+
+img {
+    float: left;
+    
+    margin-right: 1.4em;
+    margin-bottom: 0.2em;
+}
+
+
+/* ------------------------ */
+/*          LOGIN           */
+/* ------------------------ */
+
+#login {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+
+    justify-content: space-between;
+    border-style: ridge;
+    
+    border-radius: 25px;
+    padding: 1.8em;
+    padding-top: 0.5em;
+    
+    color: aliceblue;
+    background: rgba(0,0,0,0.8);
+    border-color: rgb(18, 30, 99);
+    box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+#password{
+    margin-bottom: 3em;
+}
+
+
+/* ------------------------ */
+/*          LOGOUT          */
+/* ------------------------ */
+
+#logout {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 93%;
+    height: 2em;
+    padding: 1em;
+    margin: 0.8em;
+    
+    border-style: ridge;
+    color: aliceblue;
+    background: rgba(0,0,0,0.8);
+    border-color: rgb(18, 30, 99);
+    box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+#input {
+    display: flex;
+    justify-content: center; /* MIDDLE */ 
+    align-items: center; /* MIDDLE */
+    
+    width: 100%;
+    margin-top: 1em;
+
+    color: aliceblue;
+    font-weight: bold;
+}
+
+#input-value {
+    margin-right: 1em;
+    margin-left: 1em;
+    width: 75%;
+}
+
+
+/* ------------------------ */
+/*           FILM           */
+/* ------------------------ */
+
+#added-film {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.film {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    
+    justify-content: space-between;
+    border-style: ridge;
+    
+    width: 28em;
+    border-radius: 25px;
+    padding: 1.8em;
+    padding-top: 0.5em;
+    margin: 1.250em;
+    
+    color: aliceblue;
+    background: rgba(0,0,0,0.8);
+    border-color: rgb(18, 30, 99);
+    box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+.film_starts {
+    display: flex;    
+    margin-top: 1em;
+}
+

@@ -1,0 +1,13 @@
+{
+    "name": "myproject",
+    "version": "1.0.0",
+    "description": "awesome project to play with npm",
+    "main": "index.js",
+    "scripts": {
+        "test": "ls -la"
+    },
+    "author": "arios",
+    "dependencies": {
+        "lol-champions": "^8.11.0"
+    }
+}
