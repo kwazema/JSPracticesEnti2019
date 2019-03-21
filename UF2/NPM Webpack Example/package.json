@@ -1,0 +1,20 @@
+{
+  "name": "NPM",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "lol-champions": "^8.11.0"
+  },
+  "description": "NPM example",
+  "keywords": [
+    "npm",
+    "webpack"
+  ],
+  "author": "Adria Rios"
+}
