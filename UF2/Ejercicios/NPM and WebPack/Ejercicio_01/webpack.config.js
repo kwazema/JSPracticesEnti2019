@@ -9,9 +9,9 @@ module.exports = {
     },
     watch: true, // Cada vez que guardas actualiza el dist.
     devtool: 'eval-source-map', // Traducir el dist y el codigo para mostrar en el navegar.
-    mode: 'development' ,
+    mode: 'development', // 
     
     devServer: {
-        port: 1975
+        port: 1975 // Puerto para utilizar Live Realad
     }
 };

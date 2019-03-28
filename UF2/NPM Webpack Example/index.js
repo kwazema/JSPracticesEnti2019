@@ -1,2 +1,3 @@
 const champions = require('lol-champions');
-console.log(champions)
+console.log("TEST");
+console.log(champions);

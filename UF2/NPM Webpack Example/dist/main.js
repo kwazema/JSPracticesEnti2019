@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const champions = __webpack_require__(/*! lol-champions */ \"./node_modules/lol-champions/champions.json\");\nconsole.log(champions)\n\n//# sourceURL=webpack:///./index.js?");
+eval("const champions = __webpack_require__(/*! lol-champions */ \"./node_modules/lol-champions/champions.json\");\nconsole.log(champions);\nconsole.log(\"TEST\");\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
