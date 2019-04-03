@@ -12,7 +12,6 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "unvowel": "^1.1.0"
   },
   "description": "This is my exercise!",
   "keywords": [
