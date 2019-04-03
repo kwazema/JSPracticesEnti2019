@@ -1,0 +1,23 @@
+{
+  "name": "Ejercicio_02",
+  "version": "0.0.1",
+  "scripts": {
+    "live": "webpack-dev-server --open",
+    "dev": "webpack",
+    "pro": "webpack --config webpack-pro.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "unvowel": "^1.1.0"
+  },
+  "description": "This is my exercise!",
+  "keywords": [
+    "npm",
+    "webpack"
+  ],
+  "author": "Andreu Kwazema"
+}
