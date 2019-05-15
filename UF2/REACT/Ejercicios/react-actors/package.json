@@ -1,0 +1,29 @@
+{
+  "name": "ACTORS",
+  "version": "0.0.1",
+  "scripts": {
+    "live": "webpack-dev-server --open",
+    "dev": "webpack",
+    "pro": "webpack --config webpack-pro.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "description": "ACTORS",
+  "keywords": [
+    "npm",
+    "webpack"
+  ],
+  "author": "Adria Rios"
+}
