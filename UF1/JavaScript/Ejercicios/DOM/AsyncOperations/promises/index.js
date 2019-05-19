@@ -17,7 +17,7 @@ const onVeryExpensiveOperationFail = () => {
 
 // HERE STATS THE ASYNC OPERATION
 veryExpensiveOperation()
-  .then(onVeryExpensiveOperationSuccess)
+  .then(onVeryExpensiveOperationSuccess())
   .catch(onVeryExpensiveOperationFail);
 
 // BUT WE CAN CONTINUE EXCUTING JS CODE

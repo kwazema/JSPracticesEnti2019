@@ -3,16 +3,16 @@ const veryExpensiveOperation = callback => {
   /* ------------------------------- */  
 
   // Version larga
-  const functionToExecute = () => {
-    callback('BACKEND DATA');
-  };
-  setTimeout(functionToExecute, 3000);
+  // const functionToExecute = () => {
+  //   callback('BACKEND DATA');
+  // };
+  // setTimeout(functionToExecute, 3000);
 
   /* ------------------------------- */
 
   // Version intermedia
-  const functionToExecute = () => callback('BACKEND DATA');
-  setTimeout(functionToExecute, 3000);
+  // const functionToExecute = () => callback('BACKEND DATA');
+  // setTimeout(functionToExecute, 3000);
 
   /* ------------------------------- */
 

@@ -1,0 +1,44 @@
+https://www.netconsulting.es/blog/nodejs/
+
+¿Para que sirve node.js?
+    - Te utiliza para crear servicios backend.
+    
+    - APIs (Interfaces de Programación de Aplicaciones) las APIs potencian las aplicaciones cliente
+
+
+Arquitectura cliente-servidor
+    - Aplicaciones cliente ofrecen bonitas interfaces
+   
+    - Paquinas web y aplicaciones móviles son cliente
+    
+    - Las aplicaciones cliente necesitan apoyarse con servicios centralizados
+    que son los servicos, son los encargados de guardar la información de los
+    usuarios, guardar informacion, registros, notificaciones, correos etc...
+
+
+Ventajas Node.js
+    - Facil de aprender, tiene una curba de aprendizaje alta.
+    - Se ejecuta sobre el motor de Google Chrome V8
+    - Es JavaScript.
+    
+
+¿Que es node.js?
+    - Es un entorno de JavaScript del lado del servidor, basado en eventos.
+    
+    - Node eceuta JavaScript utilizando el motor V8, desarrollado por Google
+    para el uso del navegador Google Chrome.
+    
+    - Aprovechando el motor V8 permite a Node proporcionar un entorno de 
+    ejecución del lado del servidor que compila y ejecuta JavaScript
+    a altas velocidades.
+    
+    - El aumento de velocidad es debido a que V8 compila JavaScript en código
+    máquina nativo, en lugar de interpretarlo o ejecutarlo como bytecode.
+    
+    - Es codigo abierto, y se ejecuta en Linux, Windows y Mac OS X. 
+
+    - Node.js es una libreria y entorno de ejecución de E/S dirigida por
+    eventos y por lo tanto asíncronia que se ejecuta sobre el interpresete
+    de JavaScript creado por Google V8.
+
+    - 
