@@ -39,11 +39,18 @@ class MainComponent extends React.Component {
 
   render(){
     return(
-      <div className="banner">
-        <h1>Heroes</h1>
-        <input onChange={event => this.setState({inputValue: event.target.value})}/>
-        <button onClick={this.getHeroes}>SEARCH!</button>
-        {this.renderHeroes()}
+      <div id="all"> 
+
+        <div className="banner">
+          <h1>Heroes</h1>
+          <input onChange={event => this.setState({inputValue: event.target.value})}/>
+          <button onClick={this.getHeroes}>SEARCH!</button>
+        </div>
+
+        <div id="heroe-container">
+          {this.renderHeroes()}
+        </div>
+
       </div>
     )
   }

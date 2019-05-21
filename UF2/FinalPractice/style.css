@@ -1,14 +1,38 @@
 body {
-    display: flex;
-    height: 95vh;
+    /* display: flex;
+    height: 95vh; */
 
     background-color: #1b1b1c;
 }
 
-.heroe-container {
+#app {
+    display: flex;
+
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    
+    flex: 1;
+    /* width: 100%; */
+}
+
+#input-search {
+ margin: 2em;
+}
+
+#all {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    flex: 1;
+}
+
+.heroe {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     text-align: left;
     
     justify-content: space-between;
@@ -24,21 +48,49 @@ body {
     background: rgba(0,0,0,0.8);
     border-color: rgb(18, 30, 99);
     box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+
+}
+
+#heroe-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    /* display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-end; */
+
+    flex: 1;
 }
 
 .banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    width: 93%;
+    /* width: 30%; */
     height: 2em;
     padding: 1em;
     margin: 0.8em;
-    
     border-style: ridge;
     color: aliceblue;
     background: rgba(0,0,0,0.8);
     border-color: rgb(18, 30, 99);
     box-shadow: inset 0 0 6.25em rgb(22, 35, 72), 0 0 0em rgba(254, 255, 5, 0.8);
+}
+
+img {
+    float: left;
+
+    height: 250px;
+    width: 175px;
+
+    border-style: ridge;
+
+    margin-right: 1.4em;
+    margin-bottom: 0.2em;
+    margin-top: 1.5em;
+
+    border-color: rgb(178, 223, 226);
 }
