@@ -15,6 +15,7 @@ class GameScene extends Phaser.Scene{ //extends significa herencia (en este caso
         this.load.image('ground', 'assets/images/ground.png');
         this.load.image('platform', 'assets/images/platform.png');
         this.load.image('barrel', 'assets/images/barrel.png');
+        this.load.image('heart', 'assets/images/heart.png');
     }
     
     create() { // metodo
@@ -33,10 +34,10 @@ class GameScene extends Phaser.Scene{ //extends significa herencia (en este caso
 
         // CREATE PLATFORMS
         this.platforms = this.physics.add.staticGroup();
+        this.platforms.create(0, 170, 'platform');
+        this.platforms.create(90, 290, 'platform');
         this.platforms.create(0, 430, 'platform');
         this.platforms.create(45, 560, 'platform');
-        this.platforms.create(90, 290, 'platform');
-        this.platforms.create(0, 140, 'platform');
         this.platforms.getChildren().forEach((c) => { 
             c.setOrigin(0,0);
             c.refreshBody();
@@ -71,29 +72,8 @@ class GameScene extends Phaser.Scene{ //extends significa herencia (en este caso
         this.physics.add.collider(this.player, this.ground);
         this.physics.add.collider(this.player, this.platforms);
 
-    }
 
-    setUpBarrels() {
-        this.barrels = this.physics.add.group();
-        
-        this.time.addEvent({
-            delay:5000,
-            callback: this.createSingleBarrel,
-            callbackScope: this,
-            loop: true
-        })
-        
-        
-        this.createSingleBarrel();
-        this.physics.add.collider(this.barrels, this.ground);
-        this.physics.add.collider(this.barrels, this.platforms);
-    }
 
-    createSingleBarrel() {
-        const barrel = this.barrels.create(10, 0, 'barrel');
-
-        barrel.setVelocityX(180);
-        barrel.setCollideWorldBounds(true, 1);
     }
 
     update() { // metodo
@@ -126,6 +106,31 @@ class GameScene extends Phaser.Scene{ //extends significa herencia (en este caso
             this.player.setVelocityX(0);
             this.player.setFrame(3);
         }
+
+        this.add.text(50, 120, 'Velocity: ');
+    }
+    
+    setUpBarrels() {
+        this.barrels = this.physics.add.group();
+        
+        this.time.addEvent({
+            delay:5000,
+            callback: this.createSingleBarrel,
+            callbackScope: this,
+            loop: true
+        })
+        
+        
+        this.createSingleBarrel();
+        this.physics.add.collider(this.barrels, this.ground);
+        this.physics.add.collider(this.barrels, this.platforms);
+    }
+
+    createSingleBarrel() {
+        const barrel = this.barrels.create(10, 0, 'barrel');
+
+        barrel.setVelocityX(180);
+        barrel.setCollideWorldBounds(true, 1);
     }
 
 }
