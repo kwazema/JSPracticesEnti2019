@@ -20,7 +20,16 @@ class HomeScene extends Phaser.Scene{ //extends significa herencia (en este caso
         const playBtn = this.add.sprite(180, 296, 'play'); 
         playBtn.setInteractive();
 
-        this.input.on('pointerdown', () => this.scene.start('Game'));
+        this.input.on('pointerdown', () => this.scene.start('GameScene'));
+
+        this.tweens.add({
+            targets: playBtn,
+            scaleX: 1.1,
+            scaleY: 1.1,
+            durations: 500,
+            yoyo: true,
+            repeat: -1
+        });
     }
 
     // Se llama por cada frame por segundo
