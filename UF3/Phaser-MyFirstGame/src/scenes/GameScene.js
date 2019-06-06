@@ -13,6 +13,7 @@ class GameScene extends Phaser.Scene {
         this.load.image('ground', 'assets/images/ground.png');
         this.load.image('barrel', 'assets/images/barrel.png');
         this.load.image('goal', 'assets/images/gorilla3.png');
+        this.load.image('heart', 'assets/images/heart.png');
 
         this.load.audio('overworld', ['assets/audios/overworld.ogg', 'assets/audios/overworld.mp3']);
     }
@@ -36,6 +37,10 @@ class GameScene extends Phaser.Scene {
         
         // PLAYER & PLAYER ANIMATION
         this.player = this.physics.add.sprite(20, 545, 'player');
+
+
+
+
 
         // BOUNDS COLLIDE
         this.player.setCollideWorldBounds(true);
@@ -109,6 +114,16 @@ class GameScene extends Phaser.Scene {
             fire.refreshBody();
         });
         
+        // HEART
+        this.hearts = this.add.group('heart');
+        this.hearts.create(25, 200, 'heart');
+        this.hearts.create(80, 200, 'heart');
+        this.hearts.create(135, 200, 'heart');
+
+        this.hearts.getChildren().forEach((heart) => {
+            heart.setScale(.1, .1);
+        });
+
         // GOAL
         const goal = this.physics.add.sprite(20, 90, 'goal');
         goal.body.allowGravity = false;
@@ -121,7 +136,7 @@ class GameScene extends Phaser.Scene {
         this.physics.add.collider(this.barrels, platforms);
         
         //Overlap
-        this.physics.add.overlap(this.player, this.barrels, this.killPlayer, null, this);
+        this.test = this.physics.add.overlap(this.player, this.barrels, this.killPlayer, null, this);
         this.physics.add.overlap(this.player, fires, this.killPlayer, null, this);
         this.physics.add.overlap(this.player, goal, this.win, null, this);
     }
@@ -140,6 +155,7 @@ class GameScene extends Phaser.Scene {
     
     createBarrel() {
         let barrel = this.barrels.getFirstDead();
+        
         if(!barrel) {
             barrel = this.barrels.create(0, 0, 'barrel');
         }
@@ -151,6 +167,13 @@ class GameScene extends Phaser.Scene {
         barrel.x = 20;
         barrel.y = 90;
         barrel.setVelocityX(120);
+
+        this.tweens.add({
+            targets: barrel,
+            angle: 360,
+            durations: 500,
+            repeat: -1
+        });
     }
     
     update() {
@@ -165,11 +188,13 @@ class GameScene extends Phaser.Scene {
             this.player.setVelocityX(-180);
             this.player.scaleX = 1;
             this.player.flipX = false;
-        } else if (isRightDown) {
+        }
+        else if (isRightDown) {
             this.player.anims.play('walk', true);
             this.player.setVelocityX(180);
             this.player.flipX = true;
-        }else{
+        }
+        else {
             this.player.anims.stop('walk');
             this.player.setFrame(3);
             this.player.setVelocityX(0);
@@ -182,9 +207,10 @@ class GameScene extends Phaser.Scene {
         // KILL BARREL
         this.barrels.getChildren().forEach((barrel) => {
             if(barrel.x < 10 && barrel.y > 600) {
-                this.barrels.killAndHide(barrel); 
+                this.barrels.killAndHide(barrel); // Only Sprite
+                // TODO: MOVE BARREL
             }
-        })
+        });
     }
     
 }
