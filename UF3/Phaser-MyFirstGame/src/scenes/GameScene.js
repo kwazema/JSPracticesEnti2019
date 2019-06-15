@@ -16,6 +16,7 @@ class GameScene extends Phaser.Scene {
         this.load.image('heart', 'assets/images/heart.png');
 
         this.load.audio('overworld', ['assets/audios/overworld.ogg', 'assets/audios/overworld.mp3']);
+        this.load.audio('gameover', ['assets/audios/smb_mariodie.mp3','assets/audios/smb_mariodie.ogg']);
     }
     
     create() {
@@ -28,6 +29,8 @@ class GameScene extends Phaser.Scene {
         // SOUND
         this.audio = this.sound.add('overworld', {volume: 0.1, loop: true});
         this.audio.play();
+        this.audioGameOver = this.sound.add('gameover', {volume: 0.1});
+
 
         // ADD GROUND
         this.ground = this.physics.add.sprite(0, 638, 'ground');
@@ -36,11 +39,7 @@ class GameScene extends Phaser.Scene {
         this.ground.setOrigin(0, 0);
         
         // PLAYER & PLAYER ANIMATION
-        this.player = this.physics.add.sprite(20, 545, 'player');
-
-
-
-
+        this.player = this.physics.add.sprite(0, 500, 'player');
 
         // BOUNDS COLLIDE
         this.player.setCollideWorldBounds(true);
@@ -87,7 +86,7 @@ class GameScene extends Phaser.Scene {
             loop: true
         });
         
-        //FIRES
+        // CREATE FIRES
         const fires = this.physics.add.staticGroup();
         fires.create(200, 538, 'fire');
         fires.create(60, 408, 'fire');
@@ -95,7 +94,7 @@ class GameScene extends Phaser.Scene {
         fires.create(180, 268, 'fire');
         fires.create(200, 118, 'fire');
 
-        // CREATE FIRE
+        // CREATE ANIM FIRE
         this.anims.create({
             key: 'burn',
             frames: [
@@ -136,21 +135,77 @@ class GameScene extends Phaser.Scene {
         this.physics.add.collider(this.barrels, platforms);
         
         //Overlap
-        this.test = this.physics.add.overlap(this.player, this.barrels, this.killPlayer, null, this);
-        this.physics.add.overlap(this.player, fires, this.killPlayer, null, this);
-        this.physics.add.overlap(this.player, goal, this.win, null, this);
+        this.collisionPlayerToBarrel = this.physics.add.overlap(this.player, this.barrels, this.killPlayer, null, this);
+        this.collisionPlayerToFire = this.physics.add.overlap(this.player, fires, this.killPlayer, null, this);
+        this.collisionPlayerToGoal = this.physics.add.overlap(this.player, goal, this.win, null, this);
+
+        // TIME SCORE
+        this.score = 0;
+        this.scoreText = this.add.text(170, 65, `Your Time:  ${this.score}`, {font: 'bold 25px Arial'}).setScrollFactor(0);
+        this.scoreText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
+
+        this.scoreBest = localStorage.getItem('scoreBest');
+        if (!this.scoreBest)
+            this.scoreBest = 0;
+
+        this.scoreBestText = this.add.text(170, 90, `Best Time: ${this.scoreBest}`, {font: 'bold 25px Arial'}).setScrollFactor(0);
+        this.scoreBestText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
+
+        this.canMovePlayer = true;
+
     }
     
     killPlayer() {
-        console.log('LOSE');
         this.audio.stop();
-        this.scene.start('Home');
+        this.audioGameOver.play();
+        this.canMovePlayer = false;
+
+        this.player.setVelocityX(0);
+        this.player.setVelocityY(0);
+
+        this.collisionPlayerToBarrel.destroy();
+        this.collisionPlayerToFire.destroy();
+        this.collisionPlayerToGoal.destroy();
+
+        this.tweens.add({
+            targets: this.player,    
+            scaleX: 1.2,
+            scaleY: 1.2,
+            y: '-=50',
+            //x: '-=15',
+            yoyo: true,
+            duration: 1500,
+            onComplete: () => {this.scene.start("Home")}
+        });
     }
     
     win() {
-        console.log('WIN');
         this.audio.stop();
-        this.scene.start('Home');
+        this.canMovePlayer = false;
+
+        this.player.setVelocityX(0);
+        this.player.setVelocityY(0);
+        
+        this.collisionPlayerToBarrel.destroy();
+        this.collisionPlayerToFire.destroy();
+        this.collisionPlayerToGoal.destroy();
+        
+        if (this.score > this.scoreBest) {
+            this.scoreBest = Math.round(this.score * 10)/10;
+            localStorage.setItem('scoreBest', this.scoreBest);
+            this.scoreBestText.setText(`Best Time:  ${this.scoreBest}`);
+        }
+
+        this.tweens.add({
+            targets: this.player,    
+            scaleX: 1.1,
+            scaleY: 1.1,
+            y: '-=35',
+            //x: '-=15',
+            yoyo: true,
+            duration: 1500,
+            onComplete: () => {this.scene.start("Home")}
+        });
     }
     
     createBarrel() {
@@ -183,25 +238,27 @@ class GameScene extends Phaser.Scene {
         const isLeftDown = cursorKeys.left.isDown;
         const isRightDown = cursorKeys.right.isDown;
         
-        if (isLeftDown) {
-            this.player.anims.play('walk', true);
-            this.player.setVelocityX(-180);
-            this.player.scaleX = 1;
-            this.player.flipX = false;
-        }
-        else if (isRightDown) {
-            this.player.anims.play('walk', true);
-            this.player.setVelocityX(180);
-            this.player.flipX = true;
-        }
-        else {
-            this.player.anims.stop('walk');
-            this.player.setFrame(3);
-            this.player.setVelocityX(0);
-        }
+        if (this.canMovePlayer) {
+            if (isLeftDown) {
+                this.player.anims.play('walk', true);
+                this.player.setVelocityX(-180);
+                this.player.scaleX = 1;
+                this.player.flipX = false;
+            }
+            else if (isRightDown) {
+                this.player.anims.play('walk', true);
+                this.player.setVelocityX(180);
+                this.player.flipX = true;
+            }
+            else {
+                this.player.anims.stop('walk');
+                this.player.setFrame(3);
+                this.player.setVelocityX(0);
+            }
 
-        if (isUpDown && this.player.body.wasTouching.down) {
-            this.player.setVelocityY(-550);
+            if (isUpDown && this.player.body.wasTouching.down) {
+                this.player.setVelocityY(-550);
+            }
         }
 
         // KILL BARREL
@@ -211,6 +268,9 @@ class GameScene extends Phaser.Scene {
                 // TODO: MOVE BARREL
             }
         });
+
+        this.score += 1/60;
+        this.scoreText.setText(`Your Time:  ${Math.round(this.score * 10)/10}` );
     }
     
 }
