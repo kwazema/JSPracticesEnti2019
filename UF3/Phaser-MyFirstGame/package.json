@@ -11,15 +11,15 @@
   "author": "Adria Rios",
   "license": "ISC",
   "dependencies": {
-    "phaser": "^3.17.0"
+    "phaser": "^3.55.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "babel-loader": "^8.0.6",
-    "webpack": "^4.32.0",
-    "webpack-cli": "^3.3.2",
+    "babel-loader": "^8.3.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.4.1"
   }
 }
